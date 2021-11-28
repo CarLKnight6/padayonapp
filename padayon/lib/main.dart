@@ -11,6 +11,7 @@ import 'package:padayon/videocallscreens/pages/home_page.dart';
 import 'package:padayon/mentalhealthinfo.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:padayon/settaskscreens/epap.dart';
+import 'package:padayon/page/onboarding_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,19 +20,19 @@ Future<void> main() async {
 
 // void main()  {
   runApp(MyApp());
-  
-  
 }
 
 class MyApp extends StatelessWidget {
+  static final String title = 'padayon';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       //debugShowCheckedModeBanner: false,
-      title: 'padayon',
+      title: title,
       initialRoute: '/',
       routes: {
-        '/': (context) => loginscreen(),
+        '/': (context) => OnBoardingPage(),
+        '/loginscreen': (context) => loginscreen(),
         '/adminscreen': (context) => adminscreen(),
         '/registrationscreen': (context) => registrationscreen(),
         //'/videocallscreen': (context) => videocallscreen(),

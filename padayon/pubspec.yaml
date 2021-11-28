@@ -42,6 +42,9 @@ dependencies:
   native_screenshot: ^0.0.4
   flutter_local_notifications: ^9.1.4
   flutter_native_timezone: ^2.0.0
+  introduction_screen: ^2.1.0
+  dots_indicator: ^2.0.0  
+
 
 
   # The following adds the Cupertino Icons font to your application.
