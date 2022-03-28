@@ -7,8 +7,9 @@ import 'package:flutter/rendering.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:native_screenshot/native_screenshot.dart';
 
+// ignore: must_be_immutable
 class CallPage extends StatefulWidget {
-  final String userName;
+  String userName;
   final String channelName;
   CallPage(this.userName, this.channelName);
   @override
@@ -39,7 +40,7 @@ class _CallPageState extends State<CallPage> {
       body: Stack(
         // fit: StackFit.expand,
         children: <Widget>[
-          VideoCall(widget.channelName),
+          VideoCall(widget.channelName, widget.userName),
           Positioned(
             bottom: 10,
             left: 60,

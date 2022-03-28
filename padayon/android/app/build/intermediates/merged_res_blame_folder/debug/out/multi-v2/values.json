@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\schoolworks\\capstone 1\\padayonapp\\padayon\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\schoolworks\\capstone 2\\for defense\\padayonapp\\padayon\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\f85da80177f8199a156e03907fbaa1ae\\core-1.6.0\\res\\values\\values.xml",
@@ -23,23 +23,6 @@
                     }
                 },
                 {
-                    "source": "D:\\schoolworks\\capstone 1\\padayonapp\\padayon\\android\\app\\build\\generated\\res\\google-services\\debug\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,281,385,494,614,711",
-                        "endColumns": "143,81,103,108,119,96,73",
-                        "endOffsets": "194,276,380,489,609,706,780"
-                    },
-                    "to": {
-                        "startLines": "353,405,406,407,408,409,410",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "21971,25927,26009,26113,26222,26342,26439",
-                        "endColumns": "143,81,103,108,119,96,73",
-                        "endOffsets": "22110,26004,26108,26217,26337,26434,26508"
-                    }
-                },
-                {
                     "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\6d8c0ae927d52ce74059fae993b35e7c\\jetified-glide-4.12.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -57,25 +40,6 @@
                     }
                 },
                 {
-                    "source": "D:\\schoolworks\\capstone 1\\padayonapp\\padayon\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "176,830",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "472,996"
-                    },
-                    "to": {
-                        "startLines": "575,580",
-                        "startColumns": "4,4",
-                        "startOffsets": "35947,36244",
-                        "endLines": "579,582",
-                        "endColumns": "12,12",
-                        "endOffsets": "36239,36408"
-                    }
-                },
-                {
                     "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\56d69023e4830cec3caa34a6efec374b\\media-1.2.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
@@ -90,6 +54,23 @@
                         "startOffsets": "5401,5490,5561,17744,18665,36731,36907,37029,37291,37486",
                         "endColumns": "88,70,72,61,59,65,121,60,65,66",
                         "endOffsets": "5485,5556,5629,17801,18720,36792,37024,37085,37352,37548"
+                    }
+                },
+                {
+                    "source": "D:\\schoolworks\\capstone 2\\for defense\\padayonapp\\padayon\\android\\app\\build\\generated\\res\\google-services\\debug\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,281,385,494,614,711",
+                        "endColumns": "143,81,103,108,119,96,73",
+                        "endOffsets": "194,276,380,489,609,706,780"
+                    },
+                    "to": {
+                        "startLines": "353,405,406,407,408,409,410",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "21971,25927,26009,26113,26222,26342,26439",
+                        "endColumns": "143,81,103,108,119,96,73",
+                        "endOffsets": "22110,26004,26108,26217,26337,26434,26508"
                     }
                 },
                 {
@@ -147,6 +128,25 @@
                         "endLines": "32,603,630,719",
                         "endColumns": "60,12,24,24",
                         "endOffsets": "1193,37832,39283,44494"
+                    }
+                },
+                {
+                    "source": "D:\\schoolworks\\capstone 2\\for defense\\padayonapp\\padayon\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "176,830",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "472,996"
+                    },
+                    "to": {
+                        "startLines": "575,580",
+                        "startColumns": "4,4",
+                        "startOffsets": "35947,36244",
+                        "endLines": "579,582",
+                        "endColumns": "12,12",
+                        "endOffsets": "36239,36408"
                     }
                 },
                 {

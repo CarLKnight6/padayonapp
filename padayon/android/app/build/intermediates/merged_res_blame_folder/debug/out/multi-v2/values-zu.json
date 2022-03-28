@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\schoolworks\\capstone 1\\padayonapp\\padayon\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zu\\values-zu.xml",
+            "outputFile": "D:\\schoolworks\\capstone 2\\for defense\\padayonapp\\padayon\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zu\\values-zu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\61701204fad579552eea04d7664ec590\\jetified-play-services-basement-17.1.0\\res\\values-zu\\values.xml",

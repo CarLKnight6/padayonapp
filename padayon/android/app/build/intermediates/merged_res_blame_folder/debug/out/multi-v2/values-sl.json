@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\schoolworks\\capstone 1\\padayonapp\\padayon\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sl\\values-sl.xml",
+            "outputFile": "D:\\schoolworks\\capstone 2\\for defense\\padayonapp\\padayon\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sl\\values-sl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\a097e66c49e3dbfa48321faef0367f7f\\jetified-exoplayer-ui-2.14.1\\res\\values-sl\\values-sl.xml",

@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 
+// ignore: must_be_immutable
 class VideoCall extends StatefulWidget {
   final String channelName;
-  VideoCall(this.channelName);
+  String username;
+
+  VideoCall(this.channelName, this.username);
   @override
   _VideoCallState createState() => _VideoCallState();
 }
@@ -13,6 +16,15 @@ class VideoCall extends StatefulWidget {
 class _VideoCallState extends State<VideoCall> {
   static final _users = <int>[];
   final _infoStrings = <String>[];
+  String _userName = 'admin';
+
+  Future<String?> _getUserName() async {
+    setState(() {
+      _userName = widget.username;
+    });
+
+    print('this is the userjoined $_userName');
+  }
 
   @override
   void dispose() {
@@ -27,6 +39,7 @@ class _VideoCallState extends State<VideoCall> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) => _getUserName());
     // initialize agora sdk
     initialize();
   }
@@ -72,8 +85,8 @@ class _VideoCallState extends State<VideoCall> {
       int elapsed,
     ) {
       setState(() {
-        final info = 'onJoinChannel: $channel, uid: $uid';
-        _infoStrings.add(info);
+        // final info = 'onJoinChannel: $channel, uid: $uid';
+        // _infoStrings.add(info);
       });
     };
 
@@ -86,7 +99,7 @@ class _VideoCallState extends State<VideoCall> {
 
     AgoraRtcEngine.onUserJoined = (int uid, int elapsed) {
       setState(() {
-        final info = 'userJoined: $uid';
+        var info = 'userJoined: $_userName';
         _infoStrings.add(info);
         _users.add(uid);
       });
@@ -94,7 +107,7 @@ class _VideoCallState extends State<VideoCall> {
 
     AgoraRtcEngine.onUserOffline = (int uid, int reason) {
       setState(() {
-        final info = 'userOffline: $uid';
+        final info = 'userOffline: $_userName';
         _infoStrings.add(info);
         _users.remove(uid);
       });

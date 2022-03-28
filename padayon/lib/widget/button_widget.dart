@@ -8,6 +8,7 @@ class ButtonWidget extends StatelessWidget {
     Key? key,
     required this.text,
     required this.onClicked,
+    required Color color,
   }) : super(key: key);
 
   @override

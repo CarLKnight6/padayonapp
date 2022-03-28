@@ -57,174 +57,189 @@ class _meditationscreenState extends State<meditationscreen> {
     });
   }
 
+  void _stopSound() {
+    _player.stop();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Meditate"),
-        backgroundColor: Color.fromRGBO(8, 120, 93, 3),
-      ),
-      //let's start by creating the main UI of the app
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color.fromRGBO(8, 120, 93, 3),
-                Color.fromRGBO(8, 120, 93, 3),
-              ]),
-        ),
-        child: Padding(
-          padding: EdgeInsets.only(
-            top: 48.0,
+    return WillPopScope(
+        child: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              onPressed: () {
+                _stopSound();
+                Navigator.pushNamed(context, '/homescreen');
+              },
+              icon: Icon(Icons.arrow_back),
+            ),
+            title: Text("Meditate"),
+            backgroundColor: Color.fromRGBO(8, 120, 93, 3),
           ),
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 12.0),
-                  child: Text(
-                    "Meditation",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 38.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 12.0),
-                  child: Text(
-                    "Peace of Mind",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 24.0,
-                ),
-                Center(
-                  child: Container(
-                    width: 280.0,
-                    height: 280.0,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.0),
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/bg1.jpg"),
-                        )),
-                  ),
-                ),
-                SizedBox(
-                  height: 18.0,
-                ),
-                Center(
-                  child: Text(
-                    "Stargazer",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 32.0,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 30.0,
-                ),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30.0),
-                        topRight: Radius.circular(30.0),
+          //let's start by creating the main UI of the app
+          body: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color.fromRGBO(8, 120, 93, 3),
+                    Color.fromRGBO(8, 120, 93, 3),
+                  ]),
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: 48.0,
+              ),
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child: Text(
+                        "Meditation",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 38.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: 500.0,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                "${position.inMinutes}:${position.inSeconds.remainder(60)}",
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                              slider(),
-                              Text(
-                                "${musicLength.inMinutes}:${musicLength.inSeconds.remainder(60)}",
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                            ],
+                    Padding(
+                      padding: EdgeInsets.only(left: 12.0),
+                      child: Text(
+                        "Peace of Mind",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24.0,
+                    ),
+                    Center(
+                      child: Container(
+                        width: 280.0,
+                        height: 280.0,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30.0),
+                            image: DecorationImage(
+                              image: AssetImage("assets/images/bg1.jpg"),
+                            )),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 18.0,
+                    ),
+                    Center(
+                      child: Text(
+                        "Stargazer",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 32.0,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.0),
+                            topRight: Radius.circular(30.0),
                           ),
                         ),
-                        Row(
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            IconButton(
-                              iconSize: 45.0,
-                              color: Color.fromRGBO(59, 239, 109, 23),
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.skip_previous,
+                            Container(
+                              width: 500.0,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "${position.inMinutes}:${position.inSeconds.remainder(60)}",
+                                    style: TextStyle(
+                                      fontSize: 18.0,
+                                    ),
+                                  ),
+                                  slider(),
+                                  Text(
+                                    "${musicLength.inMinutes}:${musicLength.inSeconds.remainder(60)}",
+                                    style: TextStyle(
+                                      fontSize: 18.0,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            IconButton(
-                              iconSize: 62.0,
-                              color: Color.fromRGBO(59, 239, 109, 23),
-                              onPressed: () {
-                                if (!playing) {
-                                  cache.play("padayonmusic.mp3");
-                                  setState(() {
-                                    playBtn = Icons.pause;
-                                    playing = true;
-                                  });
-                                } else {
-                                  _player.pause();
-                                  setState(() {
-                                    playBtn = Icons.play_arrow;
-                                    playing = false;
-                                  });
-                                }
-                              },
-                              icon: Icon(
-                                playBtn,
-                              ),
-                            ),
-                            IconButton(
-                              iconSize: 45.0,
-                              color: Color.fromRGBO(59, 239, 109, 23),
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.skip_next,
-                              ),
-                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                IconButton(
+                                  iconSize: 45.0,
+                                  color: Color.fromRGBO(59, 239, 109, 23),
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.skip_previous,
+                                  ),
+                                ),
+                                IconButton(
+                                  iconSize: 62.0,
+                                  color: Color.fromRGBO(59, 239, 109, 23),
+                                  onPressed: () {
+                                    if (!playing) {
+                                      cache.play("padayonmusic.mp3");
+                                      setState(() {
+                                        playBtn = Icons.pause;
+                                        playing = true;
+                                      });
+                                    } else {
+                                      _player.pause();
+                                      setState(() {
+                                        playBtn = Icons.play_arrow;
+                                        playing = false;
+                                      });
+                                    }
+                                  },
+                                  icon: Icon(
+                                    playBtn,
+                                  ),
+                                ),
+                                IconButton(
+                                  iconSize: 45.0,
+                                  color: Color.fromRGBO(59, 239, 109, 23),
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.skip_next,
+                                  ),
+                                ),
+                              ],
+                            )
                           ],
-                        )
-                      ],
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+        onWillPop: () async {
+          return false;
+        });
   }
 }

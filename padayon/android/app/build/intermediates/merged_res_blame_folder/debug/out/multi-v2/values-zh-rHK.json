@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\schoolworks\\capstone 1\\padayonapp\\padayon\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rHK\\values-zh-rHK.xml",
+            "outputFile": "D:\\schoolworks\\capstone 2\\for defense\\padayonapp\\padayon\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rHK\\values-zh-rHK.xml",
             "map": [
                 {
                     "source": "C:\\Users\\USER\\.gradle\\caches\\transforms-2\\files-2.1\\f552a8ba60c47428b0a74096dd850737\\jetified-play-services-base-17.1.0\\res\\values-zh-rHK\\values.xml",

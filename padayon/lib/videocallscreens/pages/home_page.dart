@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import './call_page.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -11,6 +14,33 @@ class _MyHomePageState extends State<MyHomePage> {
   final userNameController = TextEditingController();
   final channelNameController = TextEditingController();
   bool validateError = false;
+  // FirebaseAuth _auth = FirebaseAuth.instance;
+  String _userName = 'admin';
+
+  Future<void> _getUserName() async {
+    // FirebaseFirestore.instance
+    // .collection('users')
+    // .doc(await FirebaseAuth.instance.currentUser!.uid)
+    // .collection('userdetails')
+    // .get()
+    FirebaseFirestore.instance
+        .collection("userdata")
+        .where('uid', isEqualTo: await FirebaseAuth.instance.currentUser!.uid)
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        setState(() {
+          _userName = doc["anonname"];
+        });
+      });
+    });
+  }
+
+  void initState() {
+    super.initState();
+    print(_userName);
+    _getUserName();
+  }
 
   @override
   void dispose() {
@@ -48,12 +78,14 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 width: 300,
                 child: TextField(
+                  readOnly: true,
+                  enabled: false,
                   controller: userNameController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: 'User name',
+                    labelText: '$_userName',
                     labelStyle: TextStyle(color: Colors.white),
-                    hintText: 'John Doe',
+                    hintText: 'Your anonymousname',
                     hintStyle:
                         TextStyle(color: Color.fromRGBO(220, 231, 220, 1)),
                     border: OutlineInputBorder(
@@ -90,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   controller: channelNameController,
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
-                    labelText: 'Channel name',
+                    labelText: 'Enter Channel name',
                     labelStyle: TextStyle(color: Colors.white),
                     hintText: 'test',
                     hintStyle:
@@ -127,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 100,
                 child: MaterialButton(
                   onPressed: onJoin,
-                  color: Color.fromRGBO(136, 177, 0, 1),
+                  color: Colors.black.withOpacity(0.05),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -170,8 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
       await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>
-              CallPage(userNameController.text, channelNameController.text),
+          builder: (context) => CallPage(_userName, channelNameController.text),
         ),
       );
     }

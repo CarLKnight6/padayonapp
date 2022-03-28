@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:padayon/loginscreen.dart';
 
 class ViewNote extends StatefulWidget {
   final Map data;
@@ -15,7 +16,8 @@ class ViewNote extends StatefulWidget {
 class _ViewNoteState extends State<ViewNote> {
   late String title;
   late String des;
-
+  // late String mood;
+  // String dropdownValue = 'sad';
   bool edit = false;
   GlobalKey<FormState> key = GlobalKey<FormState>();
 
@@ -23,6 +25,7 @@ class _ViewNoteState extends State<ViewNote> {
   Widget build(BuildContext context) {
     title = widget.data['title'];
     des = widget.data['description'];
+    // mood = widget.data['mood'];
     return SafeArea(
       child: Scaffold(
         //
@@ -154,6 +157,34 @@ class _ViewNoteState extends State<ViewNote> {
                           }
                         },
                       ),
+                      // DropdownButton<String>(
+                      //   value: widget.data['mood'],
+                      //   icon: const Icon(Icons.arrow_downward),
+                      //   elevation: 16,
+                      //   style: const TextStyle(color: Colors.deepPurple),
+                      //   underline: Container(
+                      //     height: 2,
+                      //     color: Colors.deepPurpleAccent,
+                      //   ),
+                      //   onChanged: (String? _val) {
+                      //     setState(() {
+                      //       mood = _val!;
+                      //     });
+                      //   },
+                      //   items: <String>[
+                      //     'sad',
+                      //     'happy',
+                      //     'fear',
+                      //     'anger',
+                      //     'surprise',
+                      //     'disgust',
+                      //   ].map<DropdownMenuItem<String>>((String value) {
+                      //     return DropdownMenuItem<String>(
+                      //       value: value,
+                      //       child: Text(value),
+                      //     );
+                      //   }).toList(),
+                      // ),
                       //
                       Padding(
                         padding: const EdgeInsets.only(
@@ -209,6 +240,35 @@ class _ViewNoteState extends State<ViewNote> {
   void delete() async {
     // delete from db
     await widget.ref.delete();
+    // final refadminjournal = FirebaseFirestore.instance
+    //         .collection('users')
+    //         .doc('npyAZ2U8FjCSXmqxwGXq')
+    //         .collection('notes')
+    //         .where('created', isEqualTo: widget.time)
+    //     //documentid display in note ui hidden^trial stage
+    //     ;
+
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc('npyAZ2U8FjCSXmqxwGXq')
+        .collection('notes')
+        .where('creator', isEqualTo: currentuseremail)
+        .where('title', isEqualTo: widget.data['title']) //thecomparison
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc('npyAZ2U8FjCSXmqxwGXq')
+            .collection('notes')
+            .doc(element.id)
+            .delete()
+            .then((value) {
+          print("Success deleled not entitled:" + widget.data['title']);
+        });
+      });
+    });
+
     Navigator.pop(context);
   }
 
@@ -216,8 +276,41 @@ class _ViewNoteState extends State<ViewNote> {
     if (key.currentState!.validate()) {
       // TODo : showing any kind of alert that new changes have been saved
       await widget.ref.update(
-        {'title': title, 'description': des},
+        {
+          'title': title, //'mood': mood,
+          'description': des,
+          'notestatus': 'unchecked'
+        },
       );
+
+      var data = {
+        //databeingupdated
+        'title': title,
+        //'mood': mood,
+        'description': des,
+        'notestatus': 'unchecked'
+      };
+
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc('npyAZ2U8FjCSXmqxwGXq')
+          .collection('notes')
+          .where('title', isEqualTo: widget.data['title'])
+          .where('creator', isEqualTo: currentuseremail)
+          .get()
+          .then((value) {
+        value.docs.forEach((element) {
+          FirebaseFirestore.instance
+              .collection('users')
+              .doc('npyAZ2U8FjCSXmqxwGXq')
+              .collection('notes')
+              .doc(element.id)
+              .update(data)
+              .then((value) {
+            print("Success updated entitled:" + widget.data['title']);
+          });
+        });
+      });
       Navigator.of(context).pop();
     }
   }
